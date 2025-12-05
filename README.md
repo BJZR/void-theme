@@ -71,7 +71,7 @@ return {
 ### Instalación con script
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/tu-usuario/void.nvim/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/BJZR/void.nvim/main/install.sh | bash
 ```
 
 ## 🚀 Uso
