@@ -61,7 +61,7 @@ if [ "$LAZYVIM" = true ]; then
     cat > "$NVIM_CONFIG/lua/plugins/void.lua" << 'EOF'
 return {
   {
-    "tu-usuario/void.nvim",
+    "BJZR/void.nvim",
     lazy = false,
     priority = 1000,
     dir = vim.fn.stdpath("config") .. "/lua/void",
@@ -82,7 +82,7 @@ else
     cat > "$NVIM_CONFIG/lua/plugins/void.lua" << 'EOF'
 return {
   {
-    "tu-usuario/void.nvim",
+    "BJZR/void.nvim",
     lazy = false,
     priority = 1000,
     dir = vim.fn.stdpath("config") .. "/lua/void",
