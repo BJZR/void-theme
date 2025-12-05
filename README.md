@@ -36,7 +36,7 @@ purple     = "#b197fc"  -- Keywords
 ```lua
 return {
   {
-    "tu-usuario/void.nvim",
+    "BJZR/void.nvim",
     lazy = false,
     priority = 1000,
     config = function()
@@ -58,7 +58,7 @@ return {
 
 ```lua
 {
-  "tu-usuario/void.nvim",
+  "BJZR/void.nvim",
   lazy = false,
   priority = 1000,
   config = function()
