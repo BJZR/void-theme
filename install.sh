@@ -94,16 +94,12 @@ echo -e "${BLUE}→${NC} Creating plugin configuration..."
 if [ "$LAZYVIM" = true ]; then
     cat > "$NVIM_CONFIG/lua/plugins/void.lua" << 'EOF'
 return {
-  {
-    "BJZR/void.nvim",
-    lazy = false,
-    priority = 1000,
-    dir = vim.fn.stdpath("config") .. "/lua/void",
-    config = function()
-      require("void")
-      vim.cmd("colorscheme void")
-    end,
-  },
+  "BJZR/void.nvim",
+  lazy = false,
+  priority = 1000,
+  config = function()
+    require("void")
+  end,
 }
 EOF
 else
@@ -114,7 +110,6 @@ return {
     "BJZR/void.nvim",
     lazy = false,
     priority = 1000,
-    dir = vim.fn.stdpath("config") .. "/lua/void",
     config = function()
       require("void")
       vim.cmd("colorscheme void")
