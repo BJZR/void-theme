@@ -1,37 +1,61 @@
 # 🌑 void.nvim
 
-Un tema oscuro profesional para Neovim inspirado en los colores de **Void Linux**. Diseñado para LazyVim con soporte completo para Treesitter, LSP y los plugins más populares.
+<div align="center">
 
-![Neovim](https://img.shields.io/badge/neovim-0.9%2B-blueviolet?style=flat-square)
-![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
+**A professional dark theme for Neovim inspired by Void Linux**
 
-## ✨ Características
+![Neovim](https://img.shields.io/badge/neovim-0.9%2B-blueviolet?style=for-the-badge&logo=neovim)
+![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
+![Lua](https://img.shields.io/badge/lua-powered-blue?style=for-the-badge&logo=lua)
 
-- 🎨 Paleta de colores inspirada en Void Linux
-- 🌳 Soporte completo para Treesitter
-- 💡 Integración perfecta con LSP
-- 🔌 Compatible con plugins populares
-- 📦 Fácil instalación con lazy.nvim
-- 🎯 Optimizado para LazyVim
+*Perceptually uniform colors using HSLuv color space*
 
-## 🎨 Paleta de Colores
+[Features](#-features) •
+[Installation](#-installation) •
+[Configuration](#-configuration) •
+[Showcase](#-showcase) •
+[Credits](#-credits)
+
+</div>
+
+---
+
+## ✨ Features
+
+- 🎨 **Void Linux Inspired** - Beautiful green accent colors matching Void's branding
+- 🌈 **HSLuv Color Space** - Perceptually uniform color blending for consistent aesthetics
+- 🌳 **Full Treesitter Support** - Enhanced syntax highlighting for 100+ languages
+- 💡 **LSP Integration** - Semantic tokens, diagnostics, and references
+- 🔌 **Plugin Ecosystem** - First-class support for popular plugins
+- ⚡ **Performance** - Minimal overhead, fast loading
+- 🎯 **LazyVim Ready** - Drop-in support for LazyVim distribution
+
+## 🎨 Color Palette
 
 ```lua
-void_green = "#478061"  -- Verde principal de Void Linux
-red        = "#ff6b6b"  -- Errores
-orange     = "#ffa94d"  -- Warnings
-yellow     = "#ffd93d"  -- Búsqueda
-green      = "#51cf66"  -- Strings
-cyan       = "#22d3ee"  -- Operadores
-blue       = "#4dabf7"  -- Tipos
-purple     = "#b197fc"  -- Keywords
+-- Void Linux Greens
+void_green        = "#478061"  -- Primary Void green
+void_green_light  = "#5a9d7a"  -- Lighter shade
+
+-- Background & Foreground
+bg_primary        = "#0d1117"  -- Deep dark background
+fg_primary        = "#c9d1d9"  -- Light foreground
+
+-- Semantic Colors
+blue              = "#78a9ff"  -- Info, types
+red               = "#ff6b6b"  -- Errors
+orange            = "#ffa94d"  -- Warnings
+pink              = "#ff7eb6"  -- Functions
+green             = "#42be65"  -- Strings, success
+purple            = "#be95ff"  -- Keywords
+cyan              = "#82cfff"  -- Numbers
 ```
 
-## 📦 Instalación
+## 📦 Installation
 
-### Para LazyVim
+### For LazyVim
 
-1. Crea el archivo `~/.config/nvim/lua/plugins/void.lua`:
+Create `~/.config/nvim/lua/plugins/void.lua`:
 
 ```lua
 return {
@@ -40,21 +64,14 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      require("void").setup()
+      require("void")
+      vim.cmd("colorscheme void")
     end,
-  },
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "void",
-    },
   },
 }
 ```
 
-2. Reinicia Neovim y el tema se aplicará automáticamente.
-
-### Para Neovim con lazy.nvim
+### For lazy.nvim (Standard)
 
 ```lua
 {
@@ -62,101 +79,255 @@ return {
   lazy = false,
   priority = 1000,
   config = function()
-    require("void").setup()
+    require("void")
     vim.cmd("colorscheme void")
   end,
 }
 ```
 
-### Instalación con script
+### For packer.nvim
+
+```lua
+use {
+  "BJZR/void.nvim",
+  config = function()
+    require("void")
+    vim.cmd("colorscheme void")
+  end,
+}
+```
+
+### Manual Installation
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/BJZR/void.nvim/main/install.sh | bash
+git clone https://github.com/BJZR/void.nvim.git ~/.config/nvim/lua/void
 ```
 
-## 🚀 Uso
+Then add to your `init.lua`:
 
-Para cambiar al tema manualmente:
-
-```vim
-:colorscheme void
+```lua
+require("void")
+vim.cmd("colorscheme void")
 ```
 
-Para verificar que está activo:
+## 🚀 Quick Start
 
-```vim
-:echo g:colors_name
-```
+1. **Install the theme** using any method above
+2. **Restart Neovim**
+3. **Verify installation**:
+   ```vim
+   :colorscheme void
+   :echo g:colors_name
+   ```
 
-## 🔧 Requisitos
+## 🔧 Requirements
 
-- Neovim >= 0.9.0
-- `termguicolors` habilitado
-- Terminal con soporte truecolor
+- **Neovim** >= 0.9.0
+- **termguicolors** enabled
+- **Terminal** with truecolor support
 
-Asegúrate de tener esto en tu configuración:
+Make sure you have this in your configuration:
 
 ```lua
 vim.opt.termguicolors = true
 ```
 
-## 🎯 Plugins Soportados
+## 🎯 Plugin Support
 
-- **Treesitter** - Resaltado de sintaxis avanzado
-- **LSP** - Diagnósticos y referencias
-- **Telescope** - Búsqueda difusa
-- **Neo-tree** - Explorador de archivos
-- **GitSigns** - Indicadores Git
-- **Which-key** - Atajos de teclado
-- **Notify** - Notificaciones
-- **CMP** - Autocompletado
-- **Lualine** - Línea de estado
-- **Bufferline** - Pestañas de buffers
-- **Dashboard** - Pantalla de inicio
-- **Indent Blankline** - Guías de indentación
+void.nvim includes hand-crafted support for:
 
-## 🐛 Problemas Conocidos
+### Core Plugins
+- ✅ **Treesitter** - Advanced syntax highlighting
+- ✅ **LSP** - Language Server Protocol integration
+- ✅ **Diagnostic** - Error, warning, info, hint highlighting
 
-Si el tema no se ve correctamente:
+### UI Enhancements
+- ✅ **Telescope** - Fuzzy finder
+- ✅ **Neo-tree / NvimTree** - File explorers
+- ✅ **Which-key** - Keybinding helper
+- ✅ **Alpha / Dashboard** - Start screens
+- ✅ **Lualine** - Status line
+- ✅ **Bufferline** - Buffer tabs
+- ✅ **Indent Blankline** - Indentation guides
 
-1. Verifica que `termguicolors` esté activado:
+### Git Integration
+- ✅ **GitSigns** - Git decorations
+- ✅ **Neogit** - Git interface
+- ✅ **DiffView** - Diff viewer
+
+### Completion & Diagnostics
+- ✅ **nvim-cmp** - Completion menu
+- ✅ **nvim-notify** - Notification manager
+
+### Markdown & Writing
+- ✅ **Markdown** - Enhanced markdown support
+- ✅ **Render-markdown** - Inline rendering
+
+## 📸 Showcase
+
+### Dashboard
+*Clean and minimal start screen with Void green accents*
+
+### Code Editing
+*Treesitter-powered syntax highlighting with semantic tokens*
+
+### Telescope
+*Beautiful search interface with matching highlights*
+
+### Git Integration
+*Clear git status with intuitive color coding*
+
+## 🎨 Customization
+
+### Override Specific Highlights
+
 ```lua
-vim.opt.termguicolors = true
+require("void")
+vim.cmd("colorscheme void")
+
+-- Override highlights after theme loads
+vim.api.nvim_set_hl(0, "Function", { fg = "#custom", bold = true })
 ```
 
-2. Comprueba que tu terminal soporte truecolor:
+### Access Color Palette
+
+```lua
+local void = require("void").void
+
+-- Use colors in your configuration
+vim.api.nvim_set_hl(0, "MyCustomGroup", { 
+  fg = void.base07,  -- Void green
+  bg = void.base00   -- Dark background
+})
+```
+
+## 🔨 Terminal Setup
+
+### Recommended Terminals
+
+void.nvim looks best in terminals with truecolor support:
+
+- **Alacritty** ✅ (Recommended)
+- **Kitty** ✅
+- **WezTerm** ✅
+- **iTerm2** ✅ (macOS)
+- **Windows Terminal** ✅
+
+### Verify Truecolor Support
+
 ```bash
-echo $COLORTERM  # Debería mostrar: truecolor
+echo $COLORTERM  # Should show: truecolor or 24bit
 ```
 
-3. Limpia el caché de lazy.nvim:
+### Enable Truecolor
+
+Most modern terminals support truecolor by default. If not:
+
 ```bash
-rm -rf ~/.local/share/nvim/lazy
+# Add to ~/.bashrc or ~/.zshrc
+export COLORTERM=truecolor
 ```
 
-## 🤝 Contribuir
+## 🐛 Troubleshooting
 
-Las contribuciones son bienvenidas! Si encuentras algún problema:
+### Theme not loading
 
-1. Abre un [issue](https://github.com/tu-usuario/void.nvim/issues)
-2. Envía un pull request
+1. **Clear cache**:
+   ```bash
+   rm -rf ~/.local/share/nvim/lazy
+   rm -rf ~/.local/state/nvim/lazy
+   ```
 
-## 📄 Licencia
+2. **Verify installation**:
+   ```vim
+   :echo g:colors_name
+   :Lazy sync
+   ```
 
-MIT License - Ver [LICENSE](LICENSE) para más detalles.
+3. **Check for errors**:
+   ```vim
+   :messages
+   :checkhealth
+   ```
 
-## 🙏 Créditos
+### Colors look wrong
 
-- Inspirado en [Void Linux](https://voidlinux.org/)
-- Diseñado para [LazyVim](https://www.lazyvim.org/)
-- Hecho con ❤️ para la comunidad de Neovim
+1. **Enable termguicolors**:
+   ```lua
+   vim.opt.termguicolors = true
+   ```
 
-## 🔗 Enlaces
+2. **Check terminal**:
+   ```bash
+   echo $TERM  # Should be: xterm-256color or similar
+   ```
 
-- [Neovim](https://neovim.io/)
-- [LazyVim](https://www.lazyvim.org/)
-- [Void Linux](https://voidlinux.org/)
+3. **Test truecolor**:
+   ```bash
+   curl -s https://gist.githubusercontent.com/lifepillar/09a44b8cf0f9397465614e622979107f/raw/24-bit-color.sh | bash
+   ```
+
+### Plugin highlights missing
+
+Make sure plugins are loaded **after** the colorscheme:
+
+```lua
+{
+  "BJZR/void.nvim",
+  lazy = false,
+  priority = 1000,  -- Load before other plugins
+  config = function()
+    require("void")
+    vim.cmd("colorscheme void")
+  end,
+},
+```
+
+## 🤝 Contributing
+
+Contributions are welcome! Here's how you can help:
+
+1. **Report bugs** - Open an issue with details
+2. **Request features** - Suggest improvements
+3. **Submit PRs** - Fix bugs or add features
+4. **Share feedback** - Let us know what you think
+
+### Development
+
+```bash
+# Clone the repository
+git clone https://github.com/BJZR/void.nvim.git
+cd void.nvim
+
+# Make changes to lua/void/
+
+# Test locally
+nvim --cmd "set rtp+=."
+```
+
+## 📄 License
+
+MIT License - see [LICENSE](LICENSE) for details.
+
+## 🙏 Credits
+
+- **Inspired by** [Void Linux](https://voidlinux.org/) - The distribution that started it all
+- **Color blending** based on [HSLuv](https://www.hsluv.org/) - Perceptually uniform color space
+- **Structure inspired by** [oxocarbon.nvim](https://github.com/nyoom-engineering/oxocarbon.nvim) - Excellent Fennel-based theme
+- **Built for** [LazyVim](https://www.lazyvim.org/) and [Neovim](https://neovim.io/)
+
+## 🔗 Links
+
+- **GitHub**: [BJZR/void.nvim](https://github.com/BJZR/void.nvim)
+- **Issues**: [Report a bug](https://github.com/BJZR/void.nvim/issues)
+- **Discussions**: [Join the conversation](https://github.com/BJZR/void.nvim/discussions)
 
 ---
 
-⭐ Si te gusta void.nvim, dale una estrella en GitHub!
+<div align="center">
+
+**Made with 💚 for the Void Linux and Neovim communities**
+
+⭐ Star us on GitHub if you like void.nvim!
+
+</div>
