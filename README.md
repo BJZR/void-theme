@@ -59,28 +59,20 @@ Create `~/.config/nvim/lua/plugins/void.lua`:
 
 ```lua
 return {
-  {
-    "BJZR/void.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("void")
-      vim.cmd("colorscheme void")
-    end,
-  },
+  "BJZR/void.nvim",
+  -- config..
 }
 ```
 
-### For lazy.nvim (Standard)
+### For lazy.nvim (Standard) Predetermine Theme void
 
 ```lua
-{
+return {
   "BJZR/void.nvim",
   lazy = false,
   priority = 1000,
   config = function()
     require("void")
-    vim.cmd("colorscheme void")
   end,
 }
 ```
